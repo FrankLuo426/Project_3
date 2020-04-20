@@ -47,7 +47,9 @@ There is no way of actually beating the game. The goal is to survive as long as 
 
 ## VII. Screenshots
 
+![](F:\FL1227's Google Drive\学术\IGME 235\Project_4\SS1.jpg)
 
+![](F:\FL1227's Google Drive\学术\IGME 235\Project_4\SS2.jpg)
 
 ## IX. About the developer(s)
 
