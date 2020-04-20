@@ -49,3 +49,4 @@ There is no way of actually beating the game. The goal is to survive as long as 
 
 This is Frank Luo in RIT. I am a game designer and a coding person. I am an INTP person. I love games.
 
+John Zhang student of RIT, a game developer who has the passion to making great games.
