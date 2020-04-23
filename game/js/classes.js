@@ -1,4 +1,3 @@
-"use strict";
 class Player extends PIXI.Sprite {
     constructor(x = 0, y = 0, speed = 100) {
         super(PIXI.loader.resources["media/Player.png"].texture);
