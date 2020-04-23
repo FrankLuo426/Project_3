@@ -86,11 +86,11 @@ function enemyDrops() {
     let spawnY = 135;
 
     switch (randomNum) {
-        case enemyType.Water:
-            let water = new enemy(spawnX, spawnY, 500, enemyType.Water);
-            enemys.push(water);
-            gameScene.addChild(water);
-            waterDropSound.play();
+        case enemyType.Fxxk:
+            let fxxk = new enemy(spawnX, spawnY, 500, enemyType.Fxxk);
+            enemys.push(fxxk);
+            gameScene.addChild(fxxk);
+            fxxkSound.play();
             break;
 
         case enemyType.Lava:

@@ -1,9 +1,11 @@
+//Enable strict mode
 "use strict";
-let app = new PIXI.Application(800, 600, {
+
+const app = new PIXI.Application(800, 600, {
     backgroundColor: 0x808080
 });
+document.body.appendChild(app.view);
 
-document.querySelector("#game").appendChild(app.view);
 // Constants
 const sceneWidth = app.view.width;
 const sceneHeight = app.view.height;
@@ -13,10 +15,9 @@ PIXI.loader.
 add(["media/lab-background.png", "media/game-over-bg.png", "media/start-scene.png",
 "media/enemy.png", "media/enemys/chocolate.png", "media/enemys/goo.png",
 "media/enemys/icicle.png", "media/enemys/lava.png", "media/enemys/milk.png",
-"media/enemys/pee.png", "media/enemys/poison.png", "media/enemys/water.png",
-"media/jarreal.png", "media/pipette.png"]).on("progress", e => {
-    console.log(`progress=${e.progress}`)
-}).
+"media/enemys/pee.png", "media/enemys/poison.png", "media/enemys/Fxxk.png",
+"media/jarreal.png", "media/pipette.png"]).
+on("progress", e => {console.log(`progress=${e.progress}`)}).
 load(setup);
 
 // Game State enum
@@ -28,7 +29,7 @@ const gameState = Object.freeze({
 });
 
 const enemyType = Object.freeze({
-    Water: 1,
+    Fxxk: 1,
     Lava: 2,
     Goo: 3,
     Poison: 4,
@@ -45,6 +46,7 @@ let stage;
 const prefix = "Playersenses-";
 let storedHighScore = localStorage.getItem(prefix + "highScore");
 let highScore;
+
 // Field for game variables
 let enemysTextures = [];
 let backgroundImgs = [];
@@ -54,12 +56,13 @@ let gameScene;
 let controlsScene;
 let player;
 let timeLabel;
-let waterDropSound, fireSound, gooSound, poisonSound, chocolateSound, peeSound, enemyNitroSound, milkSound;
+let fxxkSound, fireSound, gooSound, poisonSound, chocolateSound, peeSound, enemyNitroSound, milkSound;
 let hitSound, loseSound;
 let gameOverScene;
 let gameOverTimeLabel;
 let highScoreLabel;
 let dt;
+
 // Game Scene variables
 let divider = 8;
 let division = (sceneWidth - 250) / divider;
@@ -73,6 +76,7 @@ let time = 0;
 let timeToFire = 0;
 let paused = true;
 let currentScene;
+
 /// Set up the scenes
 function setup() {
     // Create the 'controls scene'
@@ -100,7 +104,7 @@ function setup() {
     player = new Player(300, 250, 250);
 
     // Load Sounds
-    // waterDropSound, fire, goo, poison, chocolate, pee, enemyNitro;
+    // FxxkSound, fire, goo, poison, chocolate, pee, enemyNitro;
 
     // Load player spritesheet
     // playerTextures = loadSpriteSheet();

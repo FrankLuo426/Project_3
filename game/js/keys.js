@@ -1,4 +1,3 @@
-"use strict";
 const keyboard = Object.freeze({
 	w: 87,
 	a: 65,
