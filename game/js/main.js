@@ -10,7 +10,11 @@ const sceneHeight = app.view.height;
 
 // Pre-load the images
 PIXI.loader.
-add([]).on("progress", e => {
+add(["media/lab-background.png", "media/game-over-bg.png", "media/start-scene.png",
+"media/enemy.png", "media/enemys/chocolate.png", "media/enemys/goo.png",
+"media/enemys/icicle.png", "media/enemys/lava.png", "media/enemys/milk.png",
+"media/enemys/pee.png", "media/enemys/poison.png", "media/enemys/water.png",
+"media/jarreal.png", "media/pipette.png"]).on("progress", e => {
     console.log(`progress=${e.progress}`)
 }).
 load(setup);
