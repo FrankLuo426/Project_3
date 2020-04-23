@@ -1,4 +1,3 @@
-
 // The actual game loop that runs when game plays
 function startSceneLoop() {
     if (currentScene == gameState.StartScene) {
@@ -6,8 +5,7 @@ function startSceneLoop() {
             // Enter to start
             if (keys[keyboard.ENTER]) {
                 startGame();
-            }
-            else if(keys[keyboard.c]){
+            } else if (keys[keyboard.c]) {
                 viewControls();
             }
         });
@@ -172,11 +170,11 @@ function gameOverLoop() {
     }
 }
 
-function controlsLoop(){
-    if(currentScene == gameState.ControlScene){
-        app.ticker.add(()=>{
+function controlsLoop() {
+    if (currentScene == gameState.ControlScene) {
+        app.ticker.add(() => {
             // C to go back to start scene
-            if(keys[keyboard.q]){
+            if (keys[keyboard.q]) {
                 fromControlsToStart();
             }
         });
