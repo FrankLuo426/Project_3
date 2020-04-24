@@ -1,6 +1,6 @@
 class Player extends PIXI.Sprite {
     constructor(x = 0, y = 0, speed = 100) {
-        super(PIXI.loader.resources["media/Player.png"].texture);
+        super(PIXI.loader.resources["media/Player.png"].textures);
         this.anchor.set(0.5, 0.5); // position, scaling, rotating etc are now from center of sprite
         this.scale.set(0.1);
         this.speed = speed;

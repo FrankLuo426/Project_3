@@ -1,9 +1,7 @@
 //Enable strict mode
 "use strict";
 
-const app = new PIXI.Application(800, 600, {
-    backgroundColor: 0x808080
-});
+const app = new PIXI.Application(1200, 800);
 document.body.appendChild(app.view);
 
 // Constants
@@ -12,12 +10,12 @@ const sceneHeight = app.view.height;
 
 // Pre-load the images
 PIXI.loader.
-add(["media/lab-background.png", "media/game-over-bg.png", "media/start-scene.png",
+add(["media/Player.png","media/lab-background.png", "media/game-over-bg.png", "media/start-scene.jpg",
 "media/enemy.png", "media/enemys/chocolate.png", "media/enemys/goo.png",
 "media/enemys/icicle.png", "media/enemys/lava.png", "media/enemys/milk.png",
 "media/enemys/pee.png", "media/enemys/poison.png", "media/enemys/Fxxk.png",
 "media/jarreal.png", "media/pipette.png"]).
-on("progress", e => {console.log(`progress=${e.progress}`)}).
+on("progress", e=> {console.log(`progress=${e.progress}`)}).
 load(setup);
 
 // Game State enum
@@ -79,29 +77,38 @@ let currentScene;
 
 /// Set up the scenes
 function setup() {
-    // Create the 'controls scene'
-    //controlsScene = new PIXI.Container();
-    //controlsScene.visible = false;
-    //stage.addChild(controlsScene); 
+	stage = app.stage;
+	//Create the start scene
+    startScene = new PIXI.Container();
+    stage.addChild(startScene);
+
+    //Create the main game scene and make it invisible
+    gameScene = new PIXI.Container();
+    gameScene.visible = false;
+    stage.addChild(gameScene);
+
+    //Create the controls scene
+    controlsScene = new PIXI.Container();
+    controlsScene.visible = false;
+    stage.addChild(controlsScene); 
+
+    //Create the gameOver scene and make it invisible
+    gameOverScene = new PIXI.Container();
+    gameOverScene.visible = false;
+    stage.addChild(gameOverScene);
+    
+    // Create labels for all 3 scenes
+    createLabelsAndButtons();
 
     // Load background images
 
     // Load the enemy sprites
 
-    // Create the `start` scene
-
-    // Create the main `game` scene and make it invisible
-
     // Add the pipettes
 
-    // Create the `controls` scene
-
-    // Create the `gameOver` scene and make it invisible
-
-    // Create labels for all 3 scenes
-    createLabelsAndButtons();
-
-    player = new Player(300, 250, 250);
+    //Create player
+    player = new Player();
+    gameScene.addChild(player);
 
     // Load Sounds
     // FxxkSound, fire, goo, poison, chocolate, pee, enemyNitro;
@@ -150,6 +157,11 @@ function createLabelsAndButtons() {
     startButton.style = playStyle;
     startButton.x = 200;
     startButton.y = sceneHeight - 260;
+    startButton.interactive = true;
+    startButton.buttonMode = true;
+    startButton.on("pointerup",startGame); // startGame is a function reference
+    startButton.on('pointerover',e=>e.target.alpha = 0.7); // concise arrow function with no brackets
+    startButton.on('pointerout',e=>e.currentTarget.alpha = 1.0); // ditto
     startScene.addChild(startButton);
 
     // 2 - set up `gameScene`
@@ -294,14 +306,14 @@ function fromControlsToStart() {
 function startGame() {
     currentScene = gameState.GameScene;
 
-    gameScene.addChild(player);
-    player.x = 450;
-    player.y = sceneHeight - 50;
-    time = 0;
-    timeToFire = 0.5;
     startScene.visible = false;
     gameOverScene.visible = false;
     gameScene.visible = true;
+
+    player.x = sceneWidth/2;
+    player.y = sceneHeight/2;
+    time = 0;
+    timeToFire = 0.5;
 }
 
 // Load game over scene
