@@ -146,22 +146,27 @@ function createLabelsAndButtons() {
     });
 
     // How to play text
-    let howToPlay = new PIXI.Text("Press C for Controls");
+    let howToPlay = new PIXI.Text("Tutorial");
     howToPlay.style = playStyle;
     howToPlay.x = 200;
     howToPlay.y = sceneHeight - 140;
+    howToPlay.interactive = true;
+    howToPlay.buttonMode = true;
+    howToPlay.on("pointerup",viewControls); // viewControls is a function reference
+    howToPlay.on('pointerover',e=>e.target.alpha = 0.7); 
+    howToPlay.on('pointerout',e=>e.currentTarget.alpha = 1.0);
     startScene.addChild(howToPlay);
 
     // Start game text
-    let startButton = new PIXI.Text("Press Enter to Play");
+    let startButton = new PIXI.Text("Fight Those Troll");
     startButton.style = playStyle;
     startButton.x = 200;
     startButton.y = sceneHeight - 260;
     startButton.interactive = true;
     startButton.buttonMode = true;
     startButton.on("pointerup",startGame); // startGame is a function reference
-    startButton.on('pointerover',e=>e.target.alpha = 0.7); // concise arrow function with no brackets
-    startButton.on('pointerout',e=>e.currentTarget.alpha = 1.0); // ditto
+    startButton.on('pointerover',e=>e.target.alpha = 0.7); 
+    startButton.on('pointerout',e=>e.currentTarget.alpha = 1.0);
     startScene.addChild(startButton);
 
     // 2 - set up `gameScene`
@@ -223,17 +228,23 @@ function createLabelsAndButtons() {
     });
 
     // Make play again text
-    let playAgainText = new PIXI.Text("Press R to Play Again");
+    let playAgainText = new PIXI.Text("Play Again");
     playAgainText.style = overStyle;
     playAgainText.x = sceneWidth / 4;
     playAgainText.y = sceneHeight - 175;
+    playAgainText.on("pointerup",startGame); // startGame is a function reference
+    playAgainText.on('pointerover',e=>e.target.alpha = 0.7); 
+    playAgainText.on('pointerout',e=>e.currentTarget.alpha = 1.0);
     gameOverScene.addChild(playAgainText);
 
     // Make quit text
-    let quitText = new PIXI.Text("Press Q to Quit");
+    let quitText = new PIXI.Text("Quit");
     quitText.style = overStyle;
     quitText.x = sceneWidth / 4;
     quitText.y = sceneHeight - 100;
+    quitText.on("pointerup",quitGame); // quitGame is a function reference
+    quitText.on('pointerover',e=>e.target.alpha = 0.7); 
+    quitText.on('pointerout',e=>e.currentTarget.alpha = 1.0);
     gameOverScene.addChild(quitText);
 
     // Make how to play text
@@ -265,16 +276,15 @@ function createLabelsAndButtons() {
     instructions.y = sceneHeight / 4 + 20;
     controlsScene.addChild(instructions);
 
-    let sGoBack = new PIXI.Text("Press Q to go back");
-    sGoBack.style = new PIXI.TextStyle({
-        fill: 0xe75480,
-        fontSize: 50,
-        fontFamily: 'Futura',
-        stoke: 0xFF0000,
-        strokeThickness: 4
-    });
-    sGoBack.x = sceneWidth / 4;
+    let sGoBack = new PIXI.Text("Back");
+    sGoBack.style = playStyle;
+    sGoBack.x = sceneWidth / 2 - 100;
     sGoBack.y = sceneHeight - 100;
+    sGoBack.interactive = true;
+    sGoBack.buttonMode = true;
+    sGoBack.on("pointerup",fromControlsToStart); // fromControlsToStart is a function reference
+    sGoBack.on('pointerover',e=>e.target.alpha = 0.7); 
+    sGoBack.on('pointerout',e=>e.currentTarget.alpha = 1.0);
     controlsScene.addChild(sGoBack);
 }
 
