@@ -10,11 +10,7 @@ const sceneHeight = app.view.height;
 
 // Pre-load the images
 PIXI.loader.
-add(["media/Player.png","media/lab-background.png", "media/game-over-bg.png", "media/start-scene.jpg",
-"media/enemy.png", "media/enemys/chocolate.png", "media/enemys/goo.png",
-"media/enemys/icicle.png", "media/enemys/lava.png", "media/enemys/milk.png",
-"media/enemys/pee.png", "media/enemys/poison.png", "media/enemys/Fxxk.png",
-"media/jarreal.png", "media/pipette.png"]).
+add(["media/Player.png","media/enemys/Toxic.png","media/enemys/Stupid.png","media/enemys/Troll.png", "media/enemys/Fxxk.png",]).
 on("progress", e=> {console.log(`progress=${e.progress}`)}).
 load(setup);
 
@@ -28,13 +24,9 @@ const gameState = Object.freeze({
 
 const enemyType = Object.freeze({
     Fxxk: 1,
-    Lava: 2,
-    Goo: 3,
-    Poison: 4,
-    Chocolate: 5,
-    Pee: 6,
-    Ice: 7,
-    Milk: 8
+    Stupid: 2,
+    Toxic: 3,
+    Troll: 4,
 });
 
 // Aliases
@@ -54,7 +46,7 @@ let gameScene;
 let controlsScene;
 let player;
 let timeLabel;
-let fxxkSound, fireSound, gooSound, poisonSound, chocolateSound, peeSound, enemyNitroSound, milkSound;
+let fxxkSound, stupidSound, toxicSound, trollSound;
 let hitSound, loseSound;
 let gameOverScene;
 let gameOverTimeLabel;
@@ -62,7 +54,7 @@ let highScoreLabel;
 let dt;
 
 // Game Scene variables
-let divider = 8;
+let divider = 4;
 let division = (sceneWidth - 250) / divider;
 let randomNum;
 
@@ -111,7 +103,7 @@ function setup() {
     gameScene.addChild(player);
 
     // Load Sounds
-    // FxxkSound, fire, goo, poison, chocolate, pee, enemyNitro;
+    // FxxkSound, stupid, Toxic, Troll
 
     // Load player spritesheet
     // playerTextures = loadSpriteSheet();

@@ -93,53 +93,25 @@ function enemyDrops() {
             fxxkSound.play();
             break;
 
-        case enemyType.Lava:
-            let lava = new enemy(spawnX, spawnY, 500, enemyType.Lava);
-            enemys.push(lava);
-            gameScene.addChild(lava);
-            fireSound.play();
+        case enemyType.Stupid:
+            let stupid = new enemy(spawnX, spawnY, 500, enemyType.Stupid);
+            enemys.push(stupid);
+            gameScene.addChild(stupid);
+            stupidSound.play();
             break;
 
-        case enemyType.Goo:
-            let goo = new enemy(spawnX, spawnY, 500, enemyType.Goo);
-            enemys.push(goo);
-            gameScene.addChild(goo);
-            gooSound.play();
+        case enemyType.Toxic:
+            let toxic = new enemy(spawnX, spawnY, 500, enemyType.Toxic);
+            enemys.push(toxic);
+            gameScene.addChild(toxic);
+            toxicSound.play();
             break;
 
-        case enemyType.Poison:
-            let poison = new enemy(spawnX, spawnY, 500, enemyType.Poison);
-            enemys.push(poison);
-            gameScene.addChild(poison);
-            poisonSound.play();
-            break;
-
-        case enemyType.Chocolate:
-            let chocolate = new Enemy(spawnX, spawnY, 500, enemyType.Chocolate);
-            enemys.push(chocolate);
-            gameScene.addChild(chocolate);
-            chocolateSound.play();
-            break;
-
-        case enemyType.Pee:
-            let pee = new Enemy(spawnX, spawnY, 500, enemyType.Pee);
-            enemys.push(pee);
-            gameScene.addChild(pee);
-            peeSound.play();
-            break;
-
-        case enemyType.Ice:
-            let ice = new Enemy(spawnX, spawnY, 500, enemyType.Ice);
-            enemys.push(ice);
-            gameScene.addChild(ice);
-            enemyNitroSound.play();
-            break;
-
-        case enemyType.Milk:
-            let milk = new Enemy(spawnX, spawnY, 500, enemyType.Milk);
-            enemys.push(milk);
-            gameScene.addChild(milk);
-            milkSound.play();
+        case enemyType.Troll:
+            let troll = new enemy(spawnX, spawnY, 500, enemyType.Troll);
+            enemys.push(troll);
+            gameScene.addChild(troll);
+            trollSound.play();
             break;
     }
 }
