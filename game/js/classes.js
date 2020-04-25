@@ -1,20 +1,11 @@
 class Player extends PIXI.Sprite {
-    constructor(x = 0, y = 0, speed = 100) {
+    constructor(x = 0, y = 0, speed = 50) {
         super(PIXI.loader.resources["media/Player.png"].textures);
         this.anchor.set(0.5, 0.5); // position, scaling, rotating etc are now from center of sprite
         this.scale.set(0.5);
         this.speed = speed;
         this.x = x;
         this.y = y;
-        this.dx = 0;
-        this.dy = 0;
-        this.w2 = this.width / 2;
-        this.h2 = this.height / 2;
-    }
-
-    update(newX, newY) {
-        this.x = clamp(newX, 150, sceneWidth - 100);
-        this.y = clamp(newY, this.h2 + 150, sceneHeight - 50);
     }
 }
 
@@ -22,7 +13,7 @@ class Enemy extends PIXI.Sprite {
     constructor(x = 0, y = 0, speed = 500, enemyType = 1) {
         super(enemysTextures[enemyType - 1]);
         this.anchor.set(0.5, 0.5);
-        this.scale.set(0.5);
+        this.scale.set(0.3);
         this.x = x;
         this.y = y;
         //variables

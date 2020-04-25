@@ -312,8 +312,8 @@ function startGame() {
     startScene.visible = false;
     gameOverScene.visible = false;
     gameScene.visible = true;
-    player.x = sceneWidth/2;
-    player.y = sceneHeight/2;
+    player.x = 400;
+    player.y = 400;
     time = 0;
     timeToFire = 0.5;
 }

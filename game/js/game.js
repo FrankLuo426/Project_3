@@ -36,26 +36,28 @@ function gameLoop() {
         let newX = player.x;
         let newY = player.y;
         let amt = player.speed * dt;
+
         let w2 = player.width / 2;
         let h2 = player.height / 2;
 
         // Animation Loop
-        app.ticker.add(() => {
-            // #2 - Check Keys
-            if (keys[keyboard.d]) {
-                newX += amt;
-            } else if (keys[keyboard.a]) {
-                newX -= amt;
-            }
+        if (keys[keyboard.d]) {
+            console.log(player.x);
+            newX += amt;
+        } else if (keys[keyboard.a]) {
+            console.log(player.x);
+            newX -= amt;
+        }
 
-            if (keys[keyboard.s]) {
-                newY += amt;
-            } else if (keys[keyboard.w]) {
-                newY -= amt;
-            }
-
-            player.update(newX, newY);
-        });
+        if (keys[keyboard.s]) {
+            console.log(player.y);
+            newY += amt;
+        } else if (keys[keyboard.w]) {
+            console.log(player.y);
+            newY -= amt;
+        }
+        player.x = clamp(newX,0+w2,sceneWidth-w2);
+        player.y = clamp(newY,0+h2,sceneHeight-h2);
 
         // crawl(crawlAnimation);
 
@@ -85,11 +87,10 @@ function enemyDrops() {
     randomNum = Math.floor(Math.random() * divider) + 1;
 
     let spawnX = division * randomNum + 125;
-    let spawnY = 135;
+    let spawnY = 0;
 
     switch (randomNum) {
         case enemyType.Fxxk:
-            console.log(randomNum);
             let fxxk = new Enemy(spawnX, spawnY, 500, enemyType.Fxxk);
             enemys.push(fxxk);
             gameScene.addChild(fxxk);
