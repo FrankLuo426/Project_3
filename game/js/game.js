@@ -1,3 +1,6 @@
+//Enable strict mode
+"use strict";
+
 // The actual game loop that runs when game plays
 function startSceneLoop() {
     if (currentScene == gameState.StartScene) {
@@ -14,7 +17,6 @@ function startSceneLoop() {
 
 function gameLoop() {
     if (currentScene == gameState.GameScene) {
-
         if (roundToPointFive(time) == timeToFire) {
             // let level = Math.round(timeToFire / 15.0);
             // for (let i = 0; i < level; level++) {
@@ -65,7 +67,7 @@ function gameLoop() {
         // Collisions between enemys and player
         for (let b of enemys) {
             if (rectsIntersect(b, player)) {
-                hitSound.play();
+                //hitSound.play();
                 gameScene.removeChild(b);
                 gameScene.removeChild(player);
                 end();
@@ -87,32 +89,29 @@ function enemyDrops() {
 
     switch (randomNum) {
         case enemyType.Fxxk:
-            let fxxk = new enemy(spawnX, spawnY, 500, enemyType.Fxxk);
+            console.log(randomNum);
+            let fxxk = new Enemy(spawnX, spawnY, 500, enemyType.Fxxk);
             enemys.push(fxxk);
             gameScene.addChild(fxxk);
-            fxxkSound.play();
-            break;
+        break;
 
         case enemyType.Stupid:
-            let stupid = new enemy(spawnX, spawnY, 500, enemyType.Stupid);
+            let stupid = new Enemy(spawnX, spawnY, 500, enemyType.Stupid);
             enemys.push(stupid);
             gameScene.addChild(stupid);
-            stupidSound.play();
-            break;
+        break;
 
         case enemyType.Toxic:
-            let toxic = new enemy(spawnX, spawnY, 500, enemyType.Toxic);
+            let toxic = new Enemy(spawnX, spawnY, 500, enemyType.Toxic);
             enemys.push(toxic);
             gameScene.addChild(toxic);
-            toxicSound.play();
-            break;
+        break;
 
         case enemyType.Troll:
-            let troll = new enemy(spawnX, spawnY, 500, enemyType.Troll);
+            let troll = new Enemy(spawnX, spawnY, 500, enemyType.Troll);
             enemys.push(troll);
             gameScene.addChild(troll);
-            trollSound.play();
-            break;
+        break;
     }
 }
 

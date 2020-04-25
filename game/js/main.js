@@ -60,7 +60,6 @@ let randomNum;
 
 let circles = [];
 let enemys = [];
-let playerTextures;
 let crawlAnimation;
 let time = 0;
 let timeToFire = 0;
@@ -92,10 +91,11 @@ function setup() {
     // Create labels for all 3 scenes
     createLabelsAndButtons();
 
-    // Load background images
-
     // Load the enemy sprites
-
+    enemysTextures.push(PIXI.loader.resources["media/enemys/Fxxk.png"].texture);
+    enemysTextures.push(PIXI.loader.resources["media/enemys/Stupid.png"].texture);
+    enemysTextures.push(PIXI.loader.resources["media/enemys/Toxic.png"].texture);
+    enemysTextures.push(PIXI.loader.resources["media/enemys/Troll.png"].texture);
     // Add the pipettes
 
     //Create player
@@ -105,12 +105,10 @@ function setup() {
     // Load Sounds
     // FxxkSound, stupid, Toxic, Troll
 
-    // Load player spritesheet
-    // playerTextures = loadSpriteSheet();
     // crawlAnimation = new PIXI.extras.AnimatedSprite(playerTextures);
 
     // Start update loop
-
+    app.ticker.add(gameLoop);
 }
 
 // For creatings labels and buttons
@@ -224,6 +222,8 @@ function createLabelsAndButtons() {
     playAgainText.style = overStyle;
     playAgainText.x = sceneWidth / 4;
     playAgainText.y = sceneHeight - 175;
+    playAgainText.interactive = true;
+    playAgainText.buttonMode = true;
     playAgainText.on("pointerup",startGame); // startGame is a function reference
     playAgainText.on('pointerover',e=>e.target.alpha = 0.7); 
     playAgainText.on('pointerout',e=>e.currentTarget.alpha = 1.0);
@@ -234,6 +234,8 @@ function createLabelsAndButtons() {
     quitText.style = overStyle;
     quitText.x = sceneWidth / 4;
     quitText.y = sceneHeight - 100;
+    quitText.interactive = true;
+    quitText.buttonMode = true;
     quitText.on("pointerup",quitGame); // quitGame is a function reference
     quitText.on('pointerover',e=>e.target.alpha = 0.7); 
     quitText.on('pointerout',e=>e.currentTarget.alpha = 1.0);
@@ -307,11 +309,9 @@ function fromControlsToStart() {
 // Clicking the button calls startGame()
 function startGame() {
     currentScene = gameState.GameScene;
-
     startScene.visible = false;
     gameOverScene.visible = false;
     gameScene.visible = true;
-
     player.x = sceneWidth/2;
     player.y = sceneHeight/2;
     time = 0;
@@ -327,7 +327,7 @@ function end() {
     enemys.forEach(b => gameScene.removeChild(b)); // ditto
     enemys = [];
 
-    loseSound.play();
+    //loseSound.play();
     let score = roundToTwoDP(time);
     gameOverTimeLabel.text = "Your Time: " + score + " s";
 
