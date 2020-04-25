@@ -30,17 +30,3 @@ class Enemy extends PIXI.Sprite {
         this.y -= this.fwd.y * this.speed * dt;
     }
 }
-
-class Background extends PIXI.Sprite {
-    constructor(x = 0, y = 0, width, height, gameState, scale = 1) {
-        super(backgroundImgs[gameState]);
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
-        if (scale != 1) {
-            this.width *= scale;
-            this.height *= scale;
-        }
-    }
-}
