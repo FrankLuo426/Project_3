@@ -104,6 +104,18 @@ function setup() {
 
     // Load Sounds
     // FxxkSound, stupid, Toxic, Troll
+    fxxkSound = new Howl({
+        src: ['media/sound/fxxk.mp3']
+    });
+    toxicSound = new Howl({
+        src: ['media/sound/toxic.mp3']
+    });
+    stupidSound = new Howl({
+        src: ['media/sound/stupid.mp3']
+    });
+    trollSound = new Howl({
+        src: ['media/sound/troll.mp3']
+    });
 
     // crawlAnimation = new PIXI.extras.AnimatedSprite(playerTextures);
 

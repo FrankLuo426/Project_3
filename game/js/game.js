@@ -94,24 +94,28 @@ function enemyDrops() {
             let fxxk = new Enemy(spawnX, spawnY, 500, enemyType.Fxxk);
             enemys.push(fxxk);
             gameScene.addChild(fxxk);
+            fxxkSound.play();
         break;
 
         case enemyType.Stupid:
             let stupid = new Enemy(spawnX, spawnY, 500, enemyType.Stupid);
             enemys.push(stupid);
             gameScene.addChild(stupid);
+            stupidSound.play();
         break;
 
         case enemyType.Toxic:
             let toxic = new Enemy(spawnX, spawnY, 500, enemyType.Toxic);
             enemys.push(toxic);
             gameScene.addChild(toxic);
+            toxicSound.play();
         break;
 
         case enemyType.Troll:
             let troll = new Enemy(spawnX, spawnY, 500, enemyType.Troll);
             enemys.push(troll);
             gameScene.addChild(troll);
+            trollSound.play();
         break;
     }
 }
