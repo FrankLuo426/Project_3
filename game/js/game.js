@@ -17,16 +17,13 @@ function startSceneLoop() {
 
 function gameLoop() {
     if (currentScene == gameState.GameScene) {
+
         if (roundToPointFive(time) == timeToFire) {
-            // let level = Math.round(timeToFire / 15.0);
-            // for (let i = 0; i < level; level++) {
-            //     enemyDrops();
-            // }
+
             enemyDrops();
             timeToFire += 0.5;
         }
 
-        // if (paused) return; // keep this commented out for now
         // #1 - Calculate "delta time"
         dt = 1 / app.ticker.FPS;
         if (dt > 1 / 12) dt = 1 / 12;
@@ -42,18 +39,14 @@ function gameLoop() {
 
         // Animation Loop
         if (keys[keyboard.d]) {
-            console.log(player.x);
             newX += amt;
         } else if (keys[keyboard.a]) {
-            console.log(player.x);
             newX -= amt;
         }
 
         if (keys[keyboard.s]) {
-            console.log(player.y);
             newY += amt;
         } else if (keys[keyboard.w]) {
-            console.log(player.y);
             newY -= amt;
         }
         player.x = clamp(newX,0+w2,sceneWidth-w2);
@@ -70,8 +63,6 @@ function gameLoop() {
         for (let b of enemys) {
             if (rectsIntersect(b, player)) {
                 //hitSound.play();
-                gameScene.removeChild(b);
-                gameScene.removeChild(player);
                 end();
                 return;
             }
@@ -86,33 +77,33 @@ function enemyDrops() {
 
     randomNum = Math.floor(Math.random() * divider) + 1;
 
-    let spawnX = division * randomNum + 125;
+    let spawnX = division * randomNum + 50;
     let spawnY = 0;
 
     switch (randomNum) {
         case enemyType.Fxxk:
-            let fxxk = new Enemy(spawnX, spawnY, 500, enemyType.Fxxk);
+            let fxxk = new Enemy(spawnX, spawnY, 300, enemyType.Fxxk);
             enemys.push(fxxk);
             gameScene.addChild(fxxk);
             fxxkSound.play();
         break;
 
         case enemyType.Stupid:
-            let stupid = new Enemy(spawnX, spawnY, 500, enemyType.Stupid);
+            let stupid = new Enemy(spawnX, spawnY, 300, enemyType.Stupid);
             enemys.push(stupid);
             gameScene.addChild(stupid);
             stupidSound.play();
         break;
 
         case enemyType.Toxic:
-            let toxic = new Enemy(spawnX, spawnY, 500, enemyType.Toxic);
+            let toxic = new Enemy(spawnX, spawnY, 300, enemyType.Toxic);
             enemys.push(toxic);
             gameScene.addChild(toxic);
             toxicSound.play();
         break;
 
         case enemyType.Troll:
-            let troll = new Enemy(spawnX, spawnY, 500, enemyType.Troll);
+            let troll = new Enemy(spawnX, spawnY, 300, enemyType.Troll);
             enemys.push(troll);
             gameScene.addChild(troll);
             trollSound.play();
