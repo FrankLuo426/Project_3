@@ -116,7 +116,9 @@ function setup() {
     trollSound = new Howl({
         src: ['media/sound/troll.mp3']
     });
-
+    loseSound = new Howl({
+        src: ['media/sound/lose.mp3']
+    });
     // crawlAnimation = new PIXI.extras.AnimatedSprite(playerTextures);
 
     // Start update loop
@@ -339,7 +341,7 @@ function end() {
     enemys.forEach(b => gameScene.removeChild(b)); // ditto
     enemys = [];
 
-    //loseSound.play();
+    loseSound.play();
     let score = roundToTwoDP(time);
     gameOverTimeLabel.text = "Your Time: " + score + " s";
 
