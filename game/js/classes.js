@@ -1,5 +1,5 @@
 class Player extends PIXI.Sprite {
-    constructor(x = 0, y = 0, speed = 100) {
+    constructor(x = 0, y = 0, speed = 200) {
         super(PIXI.loader.resources["media/Player.png"].texture);
         this.anchor.set(0.5, 0.5); // position, scaling, rotating etc are now from center of sprite
         this.scale.set(0.5);
@@ -10,10 +10,10 @@ class Player extends PIXI.Sprite {
 }
 
 class Enemy extends PIXI.Sprite {
-    constructor(x = 0, y = 0, speed = 500, enemyType = 1) {
+    constructor(x = 0, y = 0, speed = 100, enemyType = 1) {
         super(enemysTextures[enemyType - 1]);
         this.anchor.set(0.5, 0.5);
-        this.scale.set(0.3);
+        this.scale.set(0.6);
         this.x = x;
         this.y = y;
         //variables

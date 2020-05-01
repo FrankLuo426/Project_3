@@ -55,7 +55,7 @@ let dt;
 
 // Game Scene variables
 let divider = 4;
-let division = (sceneWidth - 250) / divider;
+let division = (sceneWidth - 100) / divider;
 let randomNum;
 
 let circles = [];
@@ -329,7 +329,7 @@ function startGame() {
     player.x = 400;
     player.y = 400;
     time = 0;
-    timeToFire = 0.5;
+    timeToFire = 0;
 }
 
 // Load game over scene
