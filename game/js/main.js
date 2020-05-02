@@ -10,7 +10,7 @@ const sceneHeight = app.view.height;
 
 // Pre-load the images
 PIXI.loader.
-add(["media/Player.png","media/enemys/Toxic.png","media/enemys/Stupid.png","media/enemys/Troll.png", "media/enemys/Fxxk.png"]).
+add(["media/Player.png","media/enemys/Toxic.png","media/enemys/Stupid.png","media/enemys/Troll.png", "media/background.jpg", "media/enemys/Fxxk.png"]).
 on("progress", e=> {console.log(`progress=${e.progress}`)}).
 load(setup);
 
@@ -39,7 +39,7 @@ let highScore;
 
 // Field for game variables
 let enemysTextures = [];
-let backgroundImgs = [];
+let background;
 
 let startScene;
 let gameScene;
@@ -88,6 +88,13 @@ function setup() {
     gameOverScene.visible = false;
     stage.addChild(gameOverScene);
     
+    // Load the background sprites
+    background = new Background(600,400);
+    gameScene.addChild(background);
+    startScene.addChild(background);
+    controlsScene.addChild(background);
+    gameOverScene.addChild(background);
+
     // Create labels for all 3 scenes
     createLabelsAndButtons();
 
@@ -96,7 +103,6 @@ function setup() {
     enemysTextures.push(PIXI.loader.resources["media/enemys/Stupid.png"].texture);
     enemysTextures.push(PIXI.loader.resources["media/enemys/Toxic.png"].texture);
     enemysTextures.push(PIXI.loader.resources["media/enemys/Troll.png"].texture);
-    // Add the pipettes
 
     //Create player
     player = new Player();

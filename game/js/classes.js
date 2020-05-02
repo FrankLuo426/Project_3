@@ -30,3 +30,13 @@ class Enemy extends PIXI.Sprite {
         this.y -= this.fwd.y * this.speed * dt;
     }
 }
+
+class Background extends PIXI.Sprite {
+    constructor(x = 0, y = 0) {
+        super(PIXI.loader.resources["media/background.jpg"].texture);
+        this.anchor.set(0.5, 0.5); // position, scaling, rotating etc are now from center of sprite
+        this.scale.set(1.5);
+        this.x = x;
+        this.y = y;
+    }
+}
