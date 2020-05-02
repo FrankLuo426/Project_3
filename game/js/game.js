@@ -49,8 +49,8 @@ function gameLoop() {
         } else if (keys[keyboard.w]) {
             newY -= amt;
         }
-        player.x = clamp(newX,0+w2,sceneWidth-w2);
-        player.y = clamp(newY,0+h2,sceneHeight-h2);
+        player.x = clamp(newX, 0 + w2, sceneWidth - w2);
+        player.y = clamp(newY, 0 + h2, sceneHeight - h2);
 
         // crawl(crawlAnimation);
 
@@ -86,28 +86,28 @@ function enemyDrops() {
             enemys.push(fxxk);
             gameScene.addChild(fxxk);
             fxxkSound.play();
-        break;
+            break;
 
         case enemyType.Stupid:
             let stupid = new Enemy(spawnX, spawnY, 300, enemyType.Stupid);
             enemys.push(stupid);
             gameScene.addChild(stupid);
             stupidSound.play();
-        break;
+            break;
 
         case enemyType.Toxic:
             let toxic = new Enemy(spawnX, spawnY, 300, enemyType.Toxic);
             enemys.push(toxic);
             gameScene.addChild(toxic);
             toxicSound.play();
-        break;
+            break;
 
         case enemyType.Troll:
             let troll = new Enemy(spawnX, spawnY, 300, enemyType.Troll);
             enemys.push(troll);
             gameScene.addChild(troll);
             trollSound.play();
-        break;
+            break;
     }
 }
 

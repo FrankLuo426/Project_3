@@ -10,8 +10,10 @@ const sceneHeight = app.view.height;
 
 // Pre-load the images
 PIXI.loader.
-add(["media/Player.png","media/enemys/Toxic.png","media/enemys/Stupid.png","media/enemys/Troll.png", "media/background.jpg", "media/enemys/Fxxk.png"]).
-on("progress", e=> {console.log(`progress=${e.progress}`)}).
+add(["media/Player.png", "media/enemys/Toxic.png", "media/enemys/Stupid.png", "media/enemys/Troll.png", "media/background.jpg", "media/enemys/Fxxk.png"]).
+on("progress", e => {
+    console.log(`progress=${e.progress}`)
+}).
 load(setup);
 
 // Game State enum
@@ -68,8 +70,8 @@ let currentScene;
 
 /// Set up the scenes
 function setup() {
-	stage = app.stage;
-	//Create the start scene
+    stage = app.stage;
+    //Create the start scene
     startScene = new PIXI.Container();
     stage.addChild(startScene);
 
@@ -81,15 +83,15 @@ function setup() {
     //Create the controls scene
     controlsScene = new PIXI.Container();
     controlsScene.visible = false;
-    stage.addChild(controlsScene); 
+    stage.addChild(controlsScene);
 
     //Create the gameOver scene and make it invisible
     gameOverScene = new PIXI.Container();
     gameOverScene.visible = false;
     stage.addChild(gameOverScene);
-    
+
     // Load the background sprites
-    background = new Background(600,400);
+    background = new Background(600, 400);
     gameScene.addChild(background);
 
     // Create labels for all 3 scenes
@@ -159,9 +161,9 @@ function createLabelsAndButtons() {
     howToPlay.y = sceneHeight - 140;
     howToPlay.interactive = true;
     howToPlay.buttonMode = true;
-    howToPlay.on("pointerup",viewControls); // viewControls is a function reference
-    howToPlay.on('pointerover',e=>e.target.alpha = 0.7); 
-    howToPlay.on('pointerout',e=>e.currentTarget.alpha = 1.0);
+    howToPlay.on("pointerup", viewControls); // viewControls is a function reference
+    howToPlay.on('pointerover', e => e.target.alpha = 0.7);
+    howToPlay.on('pointerout', e => e.currentTarget.alpha = 1.0);
     startScene.addChild(howToPlay);
 
     // Start game text
@@ -171,9 +173,9 @@ function createLabelsAndButtons() {
     startButton.y = sceneHeight - 260;
     startButton.interactive = true;
     startButton.buttonMode = true;
-    startButton.on("pointerup",startGame); // startGame is a function reference
-    startButton.on('pointerover',e=>e.target.alpha = 0.7); 
-    startButton.on('pointerout',e=>e.currentTarget.alpha = 1.0);
+    startButton.on("pointerup", startGame); // startGame is a function reference
+    startButton.on('pointerover', e => e.target.alpha = 0.7);
+    startButton.on('pointerout', e => e.currentTarget.alpha = 1.0);
     startScene.addChild(startButton);
 
     // 2 - set up `gameScene`
@@ -241,9 +243,9 @@ function createLabelsAndButtons() {
     playAgainText.y = sceneHeight - 175;
     playAgainText.interactive = true;
     playAgainText.buttonMode = true;
-    playAgainText.on("pointerup",startGame); // startGame is a function reference
-    playAgainText.on('pointerover',e=>e.target.alpha = 0.7); 
-    playAgainText.on('pointerout',e=>e.currentTarget.alpha = 1.0);
+    playAgainText.on("pointerup", startGame); // startGame is a function reference
+    playAgainText.on('pointerover', e => e.target.alpha = 0.7);
+    playAgainText.on('pointerout', e => e.currentTarget.alpha = 1.0);
     gameOverScene.addChild(playAgainText);
 
     // Make quit text
@@ -253,9 +255,9 @@ function createLabelsAndButtons() {
     quitText.y = sceneHeight - 100;
     quitText.interactive = true;
     quitText.buttonMode = true;
-    quitText.on("pointerup",quitGame); // quitGame is a function reference
-    quitText.on('pointerover',e=>e.target.alpha = 0.7); 
-    quitText.on('pointerout',e=>e.currentTarget.alpha = 1.0);
+    quitText.on("pointerup", quitGame); // quitGame is a function reference
+    quitText.on('pointerover', e => e.target.alpha = 0.7);
+    quitText.on('pointerout', e => e.currentTarget.alpha = 1.0);
     gameOverScene.addChild(quitText);
 
     // Make how to play text
@@ -293,9 +295,9 @@ function createLabelsAndButtons() {
     sGoBack.y = sceneHeight - 100;
     sGoBack.interactive = true;
     sGoBack.buttonMode = true;
-    sGoBack.on("pointerup",fromControlsToStart); // fromControlsToStart is a function reference
-    sGoBack.on('pointerover',e=>e.target.alpha = 0.7); 
-    sGoBack.on('pointerout',e=>e.currentTarget.alpha = 1.0);
+    sGoBack.on("pointerup", fromControlsToStart); // fromControlsToStart is a function reference
+    sGoBack.on('pointerover', e => e.target.alpha = 0.7);
+    sGoBack.on('pointerout', e => e.currentTarget.alpha = 1.0);
     controlsScene.addChild(sGoBack);
 }
 
@@ -343,7 +345,6 @@ function end() {
     // clear out the level
     enemys.forEach(b => gameScene.removeChild(b)); // ditto
     enemys = [];
-
     loseSound.play();
     let score = roundToTwoDP(time);
     gameOverTimeLabel.text = "Your Time: " + score + " s";
@@ -353,7 +354,7 @@ function end() {
         score = JSON.stringify(score);
         localStorage.setItem(prefix + "highScore", score);
     }
-    
+
     // Retrieve the current high score
     storedHighScore = localStorage.getItem(prefix + "highScore");
     storedHighScore = JSON.parse(storedHighScore);
