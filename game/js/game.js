@@ -77,7 +77,7 @@ function enemyDrops() {
 
     randomNum = Math.floor(Math.random() * divider) + 1;
 
-    let spawnX = division * randomNum + 50;
+    let spawnX = division * randomNum;
     let spawnY = 0;
 
     switch (randomNum) {
