@@ -91,9 +91,6 @@ function setup() {
     // Load the background sprites
     background = new Background(600,400);
     gameScene.addChild(background);
-    startScene.addChild(background);
-    controlsScene.addChild(background);
-    gameOverScene.addChild(background);
 
     // Create labels for all 3 scenes
     createLabelsAndButtons();
